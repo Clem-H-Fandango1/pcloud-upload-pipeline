@@ -36,7 +36,7 @@ A self-hosted upload pipeline with a web dashboard for automatically uploading f
 ## Quick Install
 
 ```bash
-git clone https://github.com/YOUR_USER/pcloud-upload-pipeline.git
+git clone https://github.com/Clem-H-Fandango1/pcloud-upload-pipeline.git
 cd pcloud-upload-pipeline
 sudo bash install.sh
 ```
