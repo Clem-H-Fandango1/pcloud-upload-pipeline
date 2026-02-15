@@ -1,0 +1,25 @@
+# pCloud Upload Pipeline - Dashboard
+# Run: docker compose up -d --build
+#
+# The install script generates this file with your volume mounts.
+# To add browse paths manually, add volumes below like:
+#   - /your/media:/data/media:ro
+
+services:
+  pcloud-dashboard:
+    build: ./docker
+    container_name: pcloud-dashboard
+    restart: unless-stopped
+    ports:
+      - "${DASHBOARD_PORT:-5001}:5001"
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PIPELINE_BASE=/data/pipeline
+      - ALLOWED_PATHS=${ALLOWED_PATHS:-/data}
+      - DASHBOARD_PASSWORD=${DASHBOARD_PASSWORD:-changeme}
+      - SECRET_KEY=${SECRET_KEY:-}
+      - TZ=${TZ:-UTC}
+    volumes:
+      - ${PIPELINE_BASE}:/data/pipeline
+      - /etc/localtime:/etc/localtime:ro
+      # Browse paths are added by install.sh below this line

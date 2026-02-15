@@ -1,0 +1,13 @@
+[Unit]
+Description=pCloud Upload Watcher
+After=network.target
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/pcloud-pipeline.env
+ExecStart=/usr/local/bin/pcloud-upload-watcher.sh
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
